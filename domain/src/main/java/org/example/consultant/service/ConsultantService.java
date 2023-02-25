@@ -1,4 +1,15 @@
 package org.example.consultant.service;
 
-public class ConsultantService {
+import org.example.consultant.model.Competence;
+import org.example.consultant.model.Consultant;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface ConsultantService {
+    Consultant registerConsultant(Consultant consultant);
+
+    Consultant updateConsultant(Long id, Consultant consultant);
+
+    List<Consultant> searchConsultants(List<Competence> competences, LocalDate disponibilite);
 }
