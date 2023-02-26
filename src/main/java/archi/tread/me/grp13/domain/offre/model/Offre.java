@@ -19,4 +19,7 @@ public class Offre {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "description", nullable = false)
+    private String description;
+
 }
