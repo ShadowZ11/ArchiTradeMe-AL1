@@ -3,6 +3,7 @@ package archi.tread.me.grp13.infrastructure.rest;
 import archi.tread.me.grp13.application.service.ConsultantServiceImpl;
 import archi.tread.me.grp13.domain.consultant.model.Consultant;
 import archi.tread.me.grp13.domain.consultant.model.Competence;
+import archi.tread.me.grp13.domain.consultant.model.ConsultantOptional;
 import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
 import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
 import lombok.AllArgsConstructor;
