@@ -1,11 +1,9 @@
-package archi.tread.me.grp13.domain.consultant.model;
+package archi.tread.me.grp8.domain.consultant.model;
 
-import archi.tread.me.grp13.domain.ModalitePaiement;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

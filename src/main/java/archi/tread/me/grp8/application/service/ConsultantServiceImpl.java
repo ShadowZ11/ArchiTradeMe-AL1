@@ -1,15 +1,13 @@
-package archi.tread.me.grp13.application.service;
+package archi.tread.me.grp8.application.service;
 
-import archi.tread.me.grp13.domain.ModalitePaiement;
-import archi.tread.me.grp13.domain.consultant.model.Competence;
-import archi.tread.me.grp13.domain.consultant.model.Consultant;
-import archi.tread.me.grp13.domain.consultant.repository.CompetenceRepository;
-import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
-import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
+import archi.tread.me.grp8.domain.ModalitePaiement;
+import archi.tread.me.grp8.domain.consultant.model.Competence;
+import archi.tread.me.grp8.domain.consultant.model.Consultant;
+import archi.tread.me.grp8.domain.consultant.repository.CompetenceRepository;
+import archi.tread.me.grp8.domain.consultant.repository.ConsultantRepository;
+import archi.tread.me.grp8.domain.consultant.service.ConsultantService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

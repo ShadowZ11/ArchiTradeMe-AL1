@@ -1,24 +1,15 @@
-package archi.tread.me.grp13.infrastructure.rest;
+package archi.tread.me.grp8.infrastructure.rest;
 
-import archi.tread.me.grp13.application.service.ConsultantServiceImpl;
-import archi.tread.me.grp13.domain.consultant.model.Consultant;
-import archi.tread.me.grp13.domain.consultant.model.Competence;
-import archi.tread.me.grp13.domain.consultant.model.ConsultantOptional;
-import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
-import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
+import archi.tread.me.grp8.domain.consultant.model.Consultant;
+import archi.tread.me.grp8.domain.consultant.model.Competence;
+import archi.tread.me.grp8.domain.consultant.service.ConsultantService;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import archi.tread.me.grp13.domain.ModalitePaiement;
 
 @RestController
 @RequestMapping("/consultants")

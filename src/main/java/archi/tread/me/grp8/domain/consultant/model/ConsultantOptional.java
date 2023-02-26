@@ -1,6 +1,5 @@
-package archi.tread.me.grp13.domain.consultant.model;
+package archi.tread.me.grp8.domain.consultant.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;

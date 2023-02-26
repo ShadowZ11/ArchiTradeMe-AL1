@@ -1,4 +1,4 @@
-package archi.tread.me.grp13.domain.offre.exception;
+package archi.tread.me.grp8.domain.offre.exception;
 
 public class OffreNotFoundException extends RuntimeException{
 

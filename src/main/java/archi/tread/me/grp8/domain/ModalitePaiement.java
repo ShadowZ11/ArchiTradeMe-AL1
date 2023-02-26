@@ -1,4 +1,4 @@
-package archi.tread.me.grp13.domain;
+package archi.tread.me.grp8.domain;
 
 public enum ModalitePaiement {
 

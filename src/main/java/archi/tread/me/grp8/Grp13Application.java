@@ -1,4 +1,4 @@
-package archi.tread.me.grp13;
+package archi.tread.me.grp8;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
