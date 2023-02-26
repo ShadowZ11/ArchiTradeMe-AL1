@@ -29,8 +29,8 @@ public class ConsultantController {
         return ResponseEntity.ok(updatedConsultant);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Consultant>> searchConsultants(@RequestParam("competences") List<Competence> competences,
+    @GetMapping("/search/{competence}")
+    public ResponseEntity<List<Consultant>> searchConsultants(@RequestParam("competences") Competence competences,
                                                               @RequestParam("disponibilite") LocalDate disponibilite) {
         List<Consultant> consultants = consultantService.searchConsultants(competences, disponibilite);
         return ResponseEntity.ok(consultants);
