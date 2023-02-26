@@ -1,4 +1,4 @@
-package archi.tread.me.grp13.rest;
+package archi.tread.me.grp13.infrastructure.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

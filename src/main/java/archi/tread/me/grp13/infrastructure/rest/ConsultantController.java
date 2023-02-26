@@ -1,15 +1,12 @@
-package archi.tread.me.grp13.rest;
+package archi.tread.me.grp13.infrastructure.rest;
 
-import archi.tread.me.grp13.consultant.model.Competence;
-import archi.tread.me.grp13.consultant.model.Consultant;
-import archi.tread.me.grp13.consultant.repository.ConsultantRepository;
-import archi.tread.me.grp13.consultant.service.ConsultantService;
+import archi.tread.me.grp13.domain.consultant.model.Consultant;
+import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
+import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/consultants")

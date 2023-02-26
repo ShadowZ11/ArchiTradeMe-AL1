@@ -1,15 +1,13 @@
-package archi.tread.me.grp13.service;
+package archi.tread.me.grp13.application.service;
 
-import archi.tread.me.grp13.ModalitePaiement;
-import archi.tread.me.grp13.consultant.model.Competence;
-import archi.tread.me.grp13.consultant.model.Consultant;
-import archi.tread.me.grp13.consultant.repository.ConsultantRepository;
-import archi.tread.me.grp13.consultant.service.ConsultantService;
+import archi.tread.me.grp13.domain.ModalitePaiement;
+import archi.tread.me.grp13.domain.consultant.model.Consultant;
+import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
+import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDate;
-import java.util.List;
-
+@Slf4j
 public class ConsultantServiceImpl implements ConsultantService {
 
     private ConsultantRepository consultantRepository;

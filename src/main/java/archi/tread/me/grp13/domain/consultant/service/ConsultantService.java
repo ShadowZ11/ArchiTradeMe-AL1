@@ -1,10 +1,6 @@
-package archi.tread.me.grp13.consultant.service;
+package archi.tread.me.grp13.domain.consultant.service;
 
-import archi.tread.me.grp13.consultant.model.Competence;
-import archi.tread.me.grp13.consultant.model.Consultant;
-
-import java.time.LocalDate;
-import java.util.List;
+import archi.tread.me.grp13.domain.consultant.model.Consultant;
 
 public interface ConsultantService {
     Consultant registerConsultant(Consultant consultant);

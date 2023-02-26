@@ -1,6 +1,6 @@
-package archi.tread.me.grp13.persistance;
+package archi.tread.me.grp13.infrastructure.persistance;
 
-import archi.tread.me.grp13.offre.repository.OffreRepository;
+import archi.tread.me.grp13.domain.offre.repository.OffreRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,4 +1,4 @@
-package archi.tread.me.grp13.consultant.model;
+package archi.tread.me.grp13.domain.consultant.model;
 
 import jakarta.persistence.*;
 import lombok.*;

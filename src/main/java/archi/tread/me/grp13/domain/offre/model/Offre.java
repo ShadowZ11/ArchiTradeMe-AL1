@@ -1,4 +1,4 @@
-package archi.tread.me.grp13.offre.model;
+package archi.tread.me.grp13.domain.offre.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
