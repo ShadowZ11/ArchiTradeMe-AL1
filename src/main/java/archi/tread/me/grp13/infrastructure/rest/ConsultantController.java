@@ -1,9 +1,11 @@
 package archi.tread.me.grp13.infrastructure.rest;
 
+import archi.tread.me.grp13.application.service.ConsultantServiceImpl;
 import archi.tread.me.grp13.domain.consultant.model.Consultant;
 import archi.tread.me.grp13.domain.consultant.repository.ConsultantRepository;
 import archi.tread.me.grp13.domain.consultant.service.ConsultantService;
 import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/consultants")
 public class ConsultantController {
 
-    private ConsultantRepository consultantRepository;
-
-    private ConsultantService consultantService;
+    private final ConsultantService consultantService = new ConsultantServiceImpl();
 
     @PostMapping("/register")
     public ResponseEntity<Consultant> registerConsultant(@RequestBody Consultant consultant) {
