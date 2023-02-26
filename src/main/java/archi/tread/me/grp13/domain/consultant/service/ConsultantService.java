@@ -18,6 +18,6 @@ public interface ConsultantService {
     List<Consultant> searchConsultantsByCompetenceList(List<Competence> competencesList);
     List<Consultant> searchConsultantsByTarifJournalier(Long TarifJournalier);
     List<Consultant> searchConsultantsByDisponibility(LocalDate disponibilite);
-    List<Consultant> searchConsultantsByPaymentModality(ModalitePaiement modalitesPaiement);
+    List<Consultant> searchConsultantsByPaymentModality(String modalitesPaiement);
     List<Consultant> searchAllConsultants();
 }

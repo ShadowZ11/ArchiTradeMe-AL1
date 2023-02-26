@@ -34,18 +34,10 @@ public class ConsultantServiceImpl implements ConsultantService {
     public Consultant registerConsultant(Consultant consultant) {
         // Ajouter la logique pour la validation des données du consultant
         if(Objects.equals(consultant.getNom(), "") || Objects.equals(consultant.getPrenom(), "") ||!consultant.getEmail().contains("@")||consultant.getCompetencesList().size()==0||consultant.getTarifJournalier()<0||consultant.getDisponibilite()==null){
-            System.out.println(consultant.getCompetencesList());
-            System.out.println(Objects.equals(consultant.getNom(), ""));
-            System.out.println(Objects.equals(consultant.getPrenom(), ""));
-            System.out.println(!consultant.getEmail().contains("@"));
-            System.out.println(consultant.getCompetencesList().size());
-            System.out.println(consultant.getTarifJournalier()<0);
-            System.out.println(consultant.getDisponibilite()==null);
-
             return null;
         }else{
             for (ModalitePaiement modalite : ModalitePaiement.values()) {
-                if (modalite.name().equals(consultant.getModalitesPaiement().toString().toUpperCase())) {
+                if (modalite.name().equals(consultant.getModalitesPaiement().toUpperCase())) {
                     competenceRepository.saveAll(consultant.getCompetences());
                     return consultantRepository.save(consultant);
                 }
@@ -77,6 +69,7 @@ public class ConsultantServiceImpl implements ConsultantService {
         // Ajouter la logique pour la recherche de consultants
         return consultantRepository.findAll();
     }
+
     @Override
     public List<Consultant> searchConsultantsByCompetence(Competence competences) {
         // Ajouter la logique pour la recherche de consultants
@@ -87,6 +80,12 @@ public class ConsultantServiceImpl implements ConsultantService {
         // Ajouter la logique pour la recherche de consultants
         return consultantRepository.findByDisponibiliteGreaterThanEqual(disponibilite);
     }
+
+    @Override
+    public List<Consultant> searchConsultantsByPaymentModality(String modalitesPaiement) {
+        return consultantRepository.findByModalitesPaiement(modalitesPaiement.toUpperCase());
+    }
+
     @Override
     public List<Consultant> searchConsultantsByNom(String nom) {
         // Ajouter la logique pour la recherche de consultants
@@ -106,11 +105,6 @@ public class ConsultantServiceImpl implements ConsultantService {
     public List<Consultant> searchConsultantsByTarifJournalier(Long TarifJournalier) {
         // Ajouter la logique pour la recherche de consultants
         return consultantRepository.findByTarifJournalier(TarifJournalier);
-    }
-    @Override
-    public List<Consultant> searchConsultantsByPaymentModality(ModalitePaiement modalitesPaiement) {
-        // Ajouter la logique pour la recherche de consultants
-        return consultantRepository.findByModalitesPaiement(modalitesPaiement);
     }
 
     @Override

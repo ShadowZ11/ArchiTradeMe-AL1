@@ -9,11 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import archi.tread.me.grp13.domain.ModalitePaiement;
 
@@ -36,171 +38,49 @@ public class ConsultantController {
         return ResponseEntity.ok(updatedConsultant);
     }
 
-    /*@PostMapping("/searchByCompetence")
-    public ResponseEntity<List<Consultant>> searchConsultantsByCompetence(@RequestBody Competence competences) {
-        List<Consultant> consultants = consultantService.searchConsultantsByCompetence(competences);
+    @PostMapping("/search/name")
+    public ResponseEntity<List<Consultant>> searchByName(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByNom(c.getNom()));
+    }
+
+    @PostMapping("/search/firstname")
+    public ResponseEntity<List<Consultant>> searchByFirstName(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByPrenom(c.getPrenom()));
+    }
+
+    @PostMapping("/search/email")
+    public ResponseEntity<List<Consultant>> searchByEmail(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByEmail(c.getEmail()));
+    }
+
+    @PostMapping("/search/competences")
+    public ResponseEntity<List<Consultant>> searchByCompetences(@RequestBody Consultant c) {
+        List<Consultant> consultants = new ArrayList<>();
+        for(int i = 0; i < c.getCompetences().size(); i++) {
+            for(Consultant consult : consultantService.searchAllConsultants()) {
+                for(Competence consultCompet : consult.getCompetences()) {
+                    if (Objects.equals(consultCompet.getNom(), c.getCompetences().get(i).getNom())) {
+                        consultants.add(consult);
+                    }
+                }
+            }
+        }
+
         return ResponseEntity.ok(consultants);
     }
-    @PostMapping("/searchByDisponibility")
-    public ResponseEntity<List<Consultant>> searchConsultantsByDisponibility(@RequestBody LocalDate disponibilite) {
-        List<Consultant> consultants = consultantService.searchConsultantsByDisponibility(disponibilite);
-        return ResponseEntity.ok(consultants);
+
+    @PostMapping("/search/tjm")
+    public ResponseEntity<List<Consultant>> searchByTarifJournalier(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByTarifJournalier(c.getTarifJournalier()));
     }
-    @PostMapping("/searchByCompetenceList")
-    public ResponseEntity<List<Consultant>> searchConsultantsByCompetenceList(@RequestBody List<Competence> competencesList){
-        List<Consultant> consultants = consultantService.searchConsultantsByCompetenceList(competencesList);
-        return ResponseEntity.ok(consultants);
-    }*/
-    @PostMapping("/search")
-    public ResponseEntity<List<Consultant>> searchConsultantsByField(@RequestBody
-                                                                             Optional<String> nom,
-                                                                     Optional<String> prenom,
-                                                                     Optional<String> email,
-                                                                     Optional<List<Competence>> competencesList,
-                                                                     Optional<Long> TarifJournalier,
-                                                                     Optional<LocalDate> disponibilite,
-                                                                     Optional<ModalitePaiement> modalitesPaiement
-    ){
-        List<Consultant> res=new ArrayList<Consultant>();
-        List<Consultant> tmp=new ArrayList<Consultant>();
-        List<Consultant> tmp2=new ArrayList<Consultant>();
-        Boolean isFirst=true;
-        if(nom.isPresent()){
-            if(nom.get()!=""){
-                tmp=consultantService.searchConsultantsByNom(nom.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-                tmp=new ArrayList<Consultant>();
-                tmp2=new ArrayList<Consultant>();
-            }
-        }
 
-        if(prenom.isPresent()){
-            if(prenom.get()!=""){
-                tmp=consultantService.searchConsultantsByPrenom(prenom.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-                tmp=new ArrayList<Consultant>();
-                tmp2=new ArrayList<Consultant>();
-            }
-        }
+    @PostMapping("/search/disponibility")
+    public ResponseEntity<List<Consultant>> searchByDisponibilite(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByDisponibility(c.getDisponibilite()));
+    }
 
-        if(email.isPresent()){
-            if(email.get().contains("@")){
-                tmp=consultantService.searchConsultantsByEmail(email.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-            }
-            tmp=new ArrayList<Consultant>();
-            tmp2=new ArrayList<Consultant>();
-        }
-
-        if(competencesList.isPresent()){
-            if(competencesList.get().size()!=0){
-                tmp=consultantService.searchConsultantsByCompetenceList(competencesList.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-            }
-            tmp=new ArrayList<Consultant>();
-            tmp2=new ArrayList<Consultant>();
-        }
-
-        if(TarifJournalier.isPresent()){
-            if(TarifJournalier.get()>=0){
-                tmp=consultantService.searchConsultantsByTarifJournalier(TarifJournalier.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-            }
-            tmp=new ArrayList<Consultant>();
-            tmp2=new ArrayList<Consultant>();
-        }
-        if(disponibilite.isPresent()){
-            if(disponibilite.get()!=null){
-                tmp=consultantService.searchConsultantsByDisponibility(disponibilite.get());
-                if(isFirst){
-                    res=new ArrayList<Consultant>(tmp);
-                    isFirst=false;
-                }else{
-                    for (Consultant y : tmp){
-                        if (res.contains(y)){
-                            tmp2.add(y);
-                        }
-                    }
-                    res= new ArrayList<Consultant>(tmp2);
-                }
-            }
-            tmp=new ArrayList<Consultant>();
-            tmp2=new ArrayList<Consultant>();
-        }
-        if(modalitesPaiement.isPresent()){
-            for (ModalitePaiement modalite : ModalitePaiement.values()) {
-                if (modalite.name().equals(modalitesPaiement.get().toString())) {
-                    tmp=consultantService.searchConsultantsByPaymentModality(modalitesPaiement.get());
-                    if(isFirst){
-                        res=new ArrayList<Consultant>(tmp);
-                        isFirst=false;
-                    }else{
-                        for (Consultant y : tmp){
-                            if (res.contains(y)){
-                                tmp2.add(y);
-                            }
-                        }
-                        res= new ArrayList<Consultant>(tmp2);
-                    }
-                }
-            }
-            tmp=new ArrayList<Consultant>();
-            tmp2=new ArrayList<Consultant>();
-        }
-        if(isFirst){
-            tmp=consultantService.searchAllConsultants();
-            res=new ArrayList<Consultant>(tmp);
-        }
-        return ResponseEntity.ok(res);
+    @PostMapping("/search/modality")
+    public ResponseEntity<List<Consultant>> searchByPaymentModality(@RequestBody Consultant c) {
+        return ResponseEntity.ok(consultantService.searchConsultantsByPaymentModality(c.getModalitesPaiement()));
     }
 }

@@ -20,6 +20,6 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
     List<Consultant> findByPrenom(String prenom);
     List<Consultant> findByEmail(String email);
     List<Consultant> findByTarifJournalier(Long TarifJournalier);
-    List<Consultant> findByModalitesPaiement(ModalitePaiement modalitesPaiement);
+    List<Consultant> findByModalitesPaiement(String modalitesPaiement);
     List<Consultant> findByCompetences(Competence competences);
 }

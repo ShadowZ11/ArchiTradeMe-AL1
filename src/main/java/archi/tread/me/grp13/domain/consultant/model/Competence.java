@@ -25,6 +25,10 @@ public class Competence {
     @Column(name = "niveau")
     private int niveau;
 
+    public String getNom() {
+        return nom;
+    }
+
     @Override
     public String toString() {
         return "Competence{" +

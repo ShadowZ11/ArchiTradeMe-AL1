@@ -40,14 +40,15 @@ public final class Consultant {
     @Column(name = "dispo")
     private LocalDate disponibilite;
 
-    @Embedded
-    private ModalitePaiement modalitesPaiement;
+    @Column(name = "modalitesPaiement")
+    private String modalitesPaiement;
 
     public List<Competence> getCompetencesList() {
         return this.competences;
     }
 
-    public void setCompetencesList(List<Competence> competencesList) {
+    public void setCompetencesList(List<Competence> competences) {
+        this.competences = competences;
     }
 
     @Override
