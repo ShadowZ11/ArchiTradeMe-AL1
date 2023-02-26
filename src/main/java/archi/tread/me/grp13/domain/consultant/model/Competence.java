@@ -25,4 +25,13 @@ public class Competence {
     @Column(name = "niveau")
     private int niveau;
 
+    @Override
+    public String toString() {
+        return "Competence{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
+                ", niveau=" + niveau +
+                '}';
+    }
 }

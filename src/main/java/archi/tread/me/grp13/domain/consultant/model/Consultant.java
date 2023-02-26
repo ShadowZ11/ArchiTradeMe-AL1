@@ -17,9 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "consultant")
 public final class Consultant {
-
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "nom")
@@ -36,7 +35,7 @@ public final class Consultant {
     private List<Competence> competences;
 
     @Column(name = "TJM")
-    private Long TarifJournalier;
+    private Long tarifJournalier;
 
     @Column(name = "dispo")
     private LocalDate disponibilite;
@@ -45,9 +44,23 @@ public final class Consultant {
     private ModalitePaiement modalitesPaiement;
 
     public List<Competence> getCompetencesList() {
-        return new ArrayList<>();
+        return this.competences;
     }
 
     public void setCompetencesList(List<Competence> competencesList) {
+    }
+
+    @Override
+    public String toString() {
+        return "Consultant{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", competences=" + competences +
+                ", tarifJournalier=" + tarifJournalier +
+                ", disponibilite=" + disponibilite +
+                ", modalitesPaiement=" + modalitesPaiement +
+                '}';
     }
 }
