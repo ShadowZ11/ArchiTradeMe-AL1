@@ -16,7 +16,7 @@ public class ConsultantRepository {
         return Optional.empty();
     }
 
-    public List<Consultant> findByCompetencesInAndDisponibiliteGreaterThanEqual(List<Competence> competences, LocalDate disponibilite) {
+    public List<Consultant> findByCompetencesInAndDisponibiliteGreaterThanEqual(Competence competences, LocalDate disponibilite) {
 
         return List.of(Consultant.builder().build());
 

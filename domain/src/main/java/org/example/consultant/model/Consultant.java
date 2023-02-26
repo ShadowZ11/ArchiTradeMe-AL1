@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.example.ModalitePaiement;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Getter
@@ -16,7 +17,7 @@ public final class Consultant {
     private String nom;
     private String prenom;
     private String email;
-    private Competence competences;
+    private List<Competence> competencesList;
     private Long TarifJournalier;
     private LocalDate disponibilite;
     private ModalitePaiement modalitesPaiement;

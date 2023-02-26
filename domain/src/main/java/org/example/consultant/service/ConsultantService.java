@@ -11,5 +11,5 @@ public interface ConsultantService {
 
     Consultant updateConsultant(Long id, Consultant consultant);
 
-    List<Consultant> searchConsultants(List<Competence> competences, LocalDate disponibilite);
+    List<Consultant> searchConsultants(Competence competences, LocalDate disponibilite);
 }
